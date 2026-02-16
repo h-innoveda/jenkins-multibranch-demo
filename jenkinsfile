@@ -5,8 +5,8 @@ pipeline {
         stage('Hello') {
             steps {
                 echo "=============================="
-                echo "Branch : FEATURE/PAYMENT"
-                echo "Task   : Payment Feature Test"
+                echo "Branch : HOTFIX/ISSUE-22"
+                echo "Task   : Critical Bug Fix"
                 echo "Status : Running Pipeline..."
                 echo "=============================="
             }
@@ -14,22 +14,27 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo "Building Payment Feature code..."
+                echo "Building Hotfix code..."
             }
         }
 
         stage('Test') {
             steps {
-                echo "Running Payment gateway tests..."
-                echo "Testing transaction flow..."
-                echo "Testing refund logic..."
+                echo "Running regression tests for issue-22..."
+                echo "Verifying bug fix..."
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploying hotfix to production URGENTLY..."
             }
         }
     }
 
     post {
         success {
-            echo "feature/payment pipeline completed!"
+            echo "hotfix/issue-22 pipeline completed!"
         }
     }
 }
