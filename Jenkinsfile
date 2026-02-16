@@ -1,34 +1,39 @@
 pipeline {
-    agent any 
-    
+    agent any
+
     stages {
-        stage('Hello'){
-           steps {
+        stage('Hello') {
+            steps {
                 echo "=============================="
                 echo "Branch : MAIN"
                 echo "Task   : Production Deployment"
                 echo "Status : Running Pipeline..."
                 echo "=============================="
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo "Building MAIN branch code..."
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo "Running tests on MAIN branch..."
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploying to PRODUCTION environment..."
+            }
         }
     }
-    stage('Build'){
-        steps{
-            echo "Building the main branch"
+
+    post {
+        success {
+            echo "MAIN pipeline completed successfully!"
         }
     }
-    stage('Test'){
-        steps{
-            echo "Testing On main branch"
-        }
-    }
-    stage('Deploy'){
-        steps{
-            echo "Deployment of Main branch"
-        }
-    }
-    post{
-    success {
-        echo "Main branch successfully executed"
-    }
-    }   
 }
