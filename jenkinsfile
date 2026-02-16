@@ -5,8 +5,8 @@ pipeline {
         stage('Hello') {
             steps {
                 echo "=============================="
-                echo "Branch : DEV"
-                echo "Task   : Staging Deployment"
+                echo "Branch : FEATURE/LOGIN"
+                echo "Task   : Feature Testing Only"
                 echo "Status : Running Pipeline..."
                 echo "=============================="
             }
@@ -14,26 +14,22 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo "Building DEV branch code..."
+                echo "Building Login Feature code..."
             }
         }
 
         stage('Test') {
             steps {
-                echo "Running tests on DEV branch..."
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo "Deploying to STAGING environment..."
+                echo "Running Login Feature unit tests..."
+                echo "Testing login form validation..."
+                echo "Testing authentication flow..."
             }
         }
     }
 
     post {
         success {
-            echo "DEV pipeline completed successfully!"
+            echo "feature/login pipeline completed!"
         }
     }
 }
