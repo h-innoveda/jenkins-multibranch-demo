@@ -5,8 +5,8 @@ pipeline {
         stage('Hello') {
             steps {
                 echo "=============================="
-                echo "Branch : FEATURE/LOGIN"
-                echo "Task   : Feature Testing Only"
+                echo "Branch : FEATURE/PAYMENT"
+                echo "Task   : Payment Feature Test"
                 echo "Status : Running Pipeline..."
                 echo "=============================="
             }
@@ -14,22 +14,22 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo "Building Login Feature code..."
+                echo "Building Payment Feature code..."
             }
         }
 
         stage('Test') {
             steps {
-                echo "Running Login Feature unit tests..."
-                echo "Testing login form validation..."
-                echo "Testing authentication flow..."
+                echo "Running Payment gateway tests..."
+                echo "Testing transaction flow..."
+                echo "Testing refund logic..."
             }
         }
     }
 
     post {
         success {
-            echo "feature/login pipeline completed!"
+            echo "feature/payment pipeline completed!"
         }
     }
 }
